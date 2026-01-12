@@ -1,0 +1,51 @@
+export default [
+  {
+    weight: 3,
+    question: 'Quando você precisa tomar decisões rápidas, o que faz primeiro?',
+    A: 'razao',
+    B: 'emocao',
+    C: 'acao',
+  },
+  {
+    weight: 2,
+    question: 'Em um grupo de trabalho, o que as pessoas mais percebem em você?',
+    A: 'razao',
+    B: 'emocao',
+    C: 'acao',
+  },
+  {
+    weight: 2,
+    question: 'Quando algo dá errado, qual é sua reação mais espontânea?',
+    A: 'razao',
+    B: 'emocao',
+    C: 'acao',
+  },
+  {
+    weight: 1,
+    question: 'O que mais te incomoda em outras pessoas?',
+    A: 'razao',
+    B: 'emocao',
+    C: 'acao',
+  },
+  {
+    weight: 3,
+    question: 'Como você prefere aprender?',
+    A: 'razao',
+    B: 'emocao',
+    C: 'acao',
+  },
+  {
+    weight: 3,
+    question: 'Quando está sob estresse, você tende a:',
+    A: 'razao',
+    B: 'emocao',
+    C: 'acao',
+  },
+  {
+    weight: 3,
+    question: 'O que te dá mais sensação de "acerto"?',
+    A: 'razao',
+    B: 'emocao',
+    C: 'acao',
+  },
+]
