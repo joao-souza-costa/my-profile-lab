@@ -26,8 +26,8 @@ class QuestionController {
       email: z.email({ error: 'Email inválido' }),
       age: z
         .number({ error: 'Idade inválida' })
-        .lte(100, { error: 'idade fora do range necessário' })
-        .gte(0, { error: 'idade fora do range necessário' }),
+        .lte(100, { error: 'idade fora do intervalo necessário' })
+        .gte(0, { error: 'idade fora do intervalo necessário' }),
       gender: z.number({ error: 'Genêro inválido' }).lte(3).gte(1),
       answers: z.array(z.enum(['A', 'B', 'C'])).length(7),
     })
@@ -54,7 +54,7 @@ class QuestionController {
       new Date().toISOString(),
     ]
 
-    await Promise.allSettled([
+    Promise.allSettled([
       this.questionService.storeUserData(payload),
       this.emailService.sendEmailWithAttachment(result.data.email, report.reportId),
     ])
