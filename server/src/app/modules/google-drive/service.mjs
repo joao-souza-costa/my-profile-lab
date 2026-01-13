@@ -1,6 +1,5 @@
 import { google } from 'googleapis'
-import credentials from './credentials.js'
-import { randomUUID } from 'crypto'
+import credentials from './credentials.mjs'
 
 const auth = new google.auth.GoogleAuth({
   credentials: credentials,
@@ -14,17 +13,13 @@ class GoogleDriveService {
   }
 
   storeDataInSheet(spreadsSheetId, data) {
-    const createdAt = new Date().toISOString()
-    const payload = [randomUUID(), ...Object.values(data), createdAt]
-
     return this.sheets.spreadsheets.values.append({
       spreadsheetId: spreadsSheetId,
       range: `${this.getMonthSheetName()}!A2`,
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
-
       requestBody: {
-        values: [payload],
+        values: [data],
       },
     })
   }
@@ -102,16 +97,14 @@ class GoogleDriveService {
     })
   }
 
-  async findOrCreateSpreadsheet(folderId = '18M_KVjHDOPXytUPBFdl4Fp7UA0KfMa2J') {
-    //TODO: Pegar o folder id das envs
-
+  async findOrCreateSpreadsheet() {
     const name = this.getReportSpreadSheetName()
 
     let res = await this.drive.files.list({
       q: `
       name = '${name}'
       and mimeType = 'application/vnd.google-apps.spreadsheet'
-      and '${folderId}' in parents
+      and '${process.env.FOLDER_ID}' in parents
       and trashed = false
     `,
       fields: 'files(id, name)',

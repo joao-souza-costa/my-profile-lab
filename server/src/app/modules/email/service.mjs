@@ -1,5 +1,5 @@
 import { Resend } from 'resend'
-import GoogleDriveService from '../google-drive/service.js'
+import GoogleDriveService from '../google-drive/service.mjs'
 
 const resend = new Resend('re_CK5VJ6y8_EaX1xPA7vbFJc7Ks672XgVyu')
 
@@ -12,7 +12,6 @@ class EmailService {
   async sendEmailWithAttachment(email, fileId = '14kN3w9EX9EG5d3WvC5sPyL8tUPpwaizy') {
     //TODO: Criar template de email :D
     //TODO: Configurar dominio de email
-    //TODO: Falar com a Nath para gerar os 9 relatórios
 
     return await resend.emails.send({
       from: 'onboarding@resend.dev',
