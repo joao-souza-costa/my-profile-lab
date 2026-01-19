@@ -41,11 +41,9 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
+import { navigate } from '@/app/utils/navigate'
 
 function handleButton() {
-  router.push({ name: 'questions' })
+  navigate({ name: 'questions' })
 }
 </script>

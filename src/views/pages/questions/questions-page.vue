@@ -19,11 +19,9 @@ import { computed, inject, onBeforeMount, ref, shallowRef } from 'vue'
 import labQuestion from '../../components/lab-question.vue'
 import socialsContact from '../../components/socials-contact.vue'
 import questionServices from '@/app/services/questionServices'
-import { useRouter } from 'vue-router'
+import { navigate } from '@/app/utils/navigate'
 
 const progress = inject('progress')
-
-const router = useRouter()
 
 const answers = ref({})
 const list = ref([])
@@ -39,7 +37,7 @@ const currentComponent = shallowRef(null)
 function updateAnswers({ value }) {
   answers.value[currentQuestion.value.id] = value
   currentIndex.value += 1
-  !(currentIndex.value < list.value.length) && router.push({ name: 'personal-data' })
+  !(currentIndex.value < list.value.length) && navigate({ name: 'personal-data' })
 
   updateProgress()
 }
@@ -57,7 +55,6 @@ function findQuestions() {
     currentComponent.value = labQuestion
   })
 }
-
 onBeforeMount(() => {
   findQuestions()
 })

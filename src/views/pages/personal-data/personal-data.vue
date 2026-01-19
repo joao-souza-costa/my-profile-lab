@@ -43,11 +43,10 @@
 </template>
 
 <script setup>
+import { navigate } from '@/app/utils/navigate'
 import DsInput from '@/views/components/ds/ds-input.vue'
 import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
 
-const router = useRouter()
 const loading = ref(false)
 
 const data = reactive({
@@ -57,17 +56,12 @@ const data = reactive({
 })
 
 const genderOptions = [
-  { label: 'Homem Cisgênero', value: 1 },
-  { label: 'Mulher Cisgênero', value: 2 },
-  { label: 'Homem Transgênero', value: 3 },
-  { label: 'Mulher Transgênero', value: 4 },
-  { label: 'Não binário', value: 5 },
-  { label: 'Agênero', value: 6 },
-  { label: 'Gênero fluido', value: 7 },
-  { label: 'Prefiro não responder', value: 8 },
+  { label: 'Homem', value: 1 },
+  { label: 'Mulher', value: 2 },
+  { label: 'Prefiro não responder', value: 3 },
 ]
 
 function handleSubmit() {
-  router.push({ name: 'report-incomplete' })
+  navigate({ name: 'report-incomplete' })
 }
 </script>

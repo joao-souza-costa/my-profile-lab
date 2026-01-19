@@ -48,12 +48,10 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
+import { navigate } from '@/app/utils/navigate'
 
 function redirectToCompleteReport() {
-  router.push({ name: 'report-complete' })
+  navigate({ name: 'report-complete' })
 }
 </script>
 
